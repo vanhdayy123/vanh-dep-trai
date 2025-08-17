@@ -1,61 +1,100 @@
 <!doctype html>
 <html lang="vi">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Vanh đẹp trai</title>
-    <style>
-      html, body {
-        height: 100%;
-        margin: 0;
-      }
-      body {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-        background: #ffffff;
-        color: #111111;
-      }
-      .center-text {
-        text-align: center;
-        font-weight: 800;
-        letter-spacing: 0.02em;
-        line-height: 1.1;
-        font-size: clamp(28px, 8vw, 120px);
-        margin: 40px 0; /* khoang cach chu va QR */
-      }
-      .donate-container {
-        text-align: center;
-        margin: 20px 0;
-      }
-      .donate-container img {
-        width: 150px; /* kich thuoc QR */
-        height: 150px;
-        margin-bottom: 10px;
-      }
-      .donate-container p {
-        font-size: 18px;
-        font-weight: bold;
-        color: #333;
-      }
-    </style>
-  </head>
-  <body>
-    <!-- QR_tren -->
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vanh đẹp trai</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: #ffffff;
+      color: #111111;
+    }
+    .center-text {
+      text-align: center;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      line-height: 1.1;
+      font-size: clamp(28px, 8vw, 120px);
+      margin: 40px 0;
+    }
+    .donate-container {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .donate-container img {
+      width: 150px;
+      height: 150px;
+      margin-bottom: 10px;
+    }
+    .donate-container p {
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
+    #main-content {
+      display: none; /* ẩn trước nhập tên */
+    }
+    #name-form {
+      text-align: center; /* ra giữa */
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Form tên -->
+  <div id="name-form">
+    <label for="username">Bạn tên là gì:</label><br>
+    <input type="text" id="username" placeholder="Nhập tên bạn"><br>
+    <button onclick="showContent()">Gửi</button>
+  </div>
+
+  <!-- Nội dung chính, ẩn ban đầu -->
+  <div id="main-content">
+    <!-- QR trên -->
     <div class="donate-container">
       <img src="qrvanh.jpg" alt="Donate QR trên">
-      <p>Hãy Donate cho Vanh đẹp trai</p>
+      <p>Trả tiền cho HVA địt mẹ mày</p>
     </div>
 
     <!-- middle-text -->
-    <div class="center-text">LÂN ĐÌ BÚ CẶC CHÓ</div>
+    <div class="center-text" id="main-text"></div>
 
-    <!-- QR_duoi -->
+    <!-- QR dưới -->
     <div class="donate-container">
       <img src="qrvanh.jpg" alt="Donate QR dưới">
-      <p>Hãy Donate cho Vanh đẹp trai</p>
+      <p>Trả tiền cho HVA địt mẹ mày</p>
     </div>
-  </body>
+  </div>
+
+  <script>
+    function showContent() {
+      const name = document.getElementById('username').value.trim();
+      if(name === "") {
+        alert("Bạn chưa nhập tên!");
+        return;
+      }
+
+      // main text, thay name hehe
+      document.getElementById('main-text').innerText = `${name} BÚ CẶC CHÓ`;
+
+      // main text, ẩn form
+      document.getElementById('name-form').style.display = "none";
+      document.getElementById('main-content').style.display = "block";
+    }
+  </script>
+</body>
 </html>
+
