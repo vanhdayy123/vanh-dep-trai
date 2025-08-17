@@ -41,12 +41,12 @@
       color: #333;
     }
     #main-content {
-      display: none; /* ẩn trước nhập tên */
+      display: none; /* Ẩn ndung trc khi nhập tên */
     }
     #name-form {
-      text-align: center; /* ra giữa */
+      text-align: center; /* căn giữa form */
     }
-    input, button {
+    input, select, button {
       padding: 10px;
       font-size: 16px;
       margin: 5px;
@@ -54,19 +54,27 @@
   </style>
 </head>
 <body>
-  <!-- Form tên -->
+  <!-- Form nhập tên và giới tính -->
   <div id="name-form">
     <label for="username">Bạn tên là gì:</label><br>
     <input type="text" id="username" placeholder="Nhập tên bạn"><br>
+    
+    <label for="gender">Giới tính của bạn:</label><br>
+    <select id="gender">
+      <option value="">Khác</option>
+      <option value="Nam">Nam</option>
+      <option value="Nữ">Nữ</option>
+    </select><br>
+    
     <button onclick="showContent()">Gửi</button>
   </div>
 
-  <!-- Nội dung chính, ẩn ban đầu -->
+  <!-- Ndung chính, ẩn ban đầu -->
   <div id="main-content">
     <!-- QR trên -->
     <div class="donate-container">
-      <img src="qrvanh.jpg" alt="Donate QR trên">
-      <p>Trả tiền cho HVA địt mẹ mày</p>
+      <img src="qrvanh.png" alt="Donate QR trên">
+      <p>Hãy Donate cho HVA</p>
     </div>
 
     <!-- middle-text -->
@@ -74,27 +82,39 @@
 
     <!-- QR dưới -->
     <div class="donate-container">
-      <img src="qrvanh.jpg" alt="Donate QR dưới">
-      <p>Trả tiền cho HVA địt mẹ mày</p>
+      <img src="qrvanh.png" alt="Donate QR dưới">
+      <p>Hãy Donate cho HVA</p>
     </div>
   </div>
 
   <script>
     function showContent() {
       const name = document.getElementById('username').value.trim();
+      const gender = document.getElementById('gender').value;
+
       if(name === "") {
         alert("Bạn chưa nhập tên!");
         return;
       }
 
-      // main text, thay name hehe
-      document.getElementById('main-text').innerText = `${name} BÚ CẶC CHÓ`;
+      // Xác định dòng giữa dựa trên giới tính
+      let middleText;
+      if(gender === "Nam") {
+        middleText = `${name} đẹp trai`;
+      } else if(gender === "Nữ") {
+        middleText = `${name} xinh gái`;
+      } else {
+        middleText = `${name}`;
+      }
 
-      // main text, ẩn form
+      document.getElementById('main-text').innerText = middleText;
+
+      // Hiển thị nội dung, ẩn form
       document.getElementById('name-form').style.display = "none";
       document.getElementById('main-content').style.display = "block";
     }
   </script>
 </body>
 </html>
+
 
