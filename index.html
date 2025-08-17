@@ -3,8 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Vanh đẹp trai
-    </title>
+    <title>Vanh đẹp trai</title>
     <style>
       html, body {
         height: 100%;
@@ -12,6 +11,7 @@
       }
       body {
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
         font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
@@ -23,12 +23,39 @@
         font-weight: 800;
         letter-spacing: 0.02em;
         line-height: 1.1;
-        /* Responsive size: min 28px, scales with viewport width, max 120px */
         font-size: clamp(28px, 8vw, 120px);
+        margin: 40px 0; /* khoang cach chu va QR */
+      }
+      .donate-container {
+        text-align: center;
+        margin: 20px 0;
+      }
+      .donate-container img {
+        width: 150px; /* kich thuoc QR */
+        height: 150px;
+        margin-bottom: 10px;
+      }
+      .donate-container p {
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
       }
     </style>
   </head>
   <body>
+    <!-- QR_tren -->
+    <div class="donate-container">
+      <img src="qrvanh.jpg" alt="Donate QR trên">
+      <p>Hãy Donate cho Vanh đẹp trai</p>
+    </div>
+
+    <!-- middle-text -->
     <div class="center-text">LÂN ĐÌ BÚ CẶC CHÓ</div>
+
+    <!-- QR_duoi -->
+    <div class="donate-container">
+      <img src="qrvanh.jpg" alt="Donate QR dưới">
+      <p>Hãy Donate cho Vanh đẹp trai</p>
+    </div>
   </body>
 </html>
