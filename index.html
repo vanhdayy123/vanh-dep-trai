@@ -3,11 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Vanh đẹp trai</title>
+  <title>NgThao xinhxinh gai</title>
   <style>
     html, body {
       height: 100%;
       margin: 0;
+      overflow: hidden; /* tránh scrollbar */
     }
     body {
       display: flex;
@@ -20,101 +21,42 @@
     }
     .center-text {
       text-align: center;
-      font-weight: 800;
-      letter-spacing: 0.02em;
-      line-height: 1.1;
-      font-size: clamp(28px, 8vw, 120px);
-      margin: 40px 0;
-    }
-    .donate-container {
-      text-align: center;
-      margin: 20px 0;
-    }
-    .donate-container img {
-      width: 150px;
-      height: 150px;
-      margin-bottom: 10px;
-    }
-    .donate-container p {
-      font-size: 18px;
-      font-weight: bold;
-      color: #333;
-    }
-    #main-content {
-      display: none; /* Ẩn ndung trc khi nhập tên */
-    }
-    #name-form {
-      text-align: center; /* căn giữa form */
-    }
-    input, select, button {
-      padding: 10px;
-      font-size: 16px;
-      margin: 5px;
-    }
-  </style>
-</head>
-<body>
-  <!-- Form nhập tên và giới tính -->
-  <div id="name-form">
-    <label for="username">Bạn tên là gì:</label><br>
-    <input type="text" id="username" placeholder="Nhập tên bạn"><br>
-    
-    <label for="gender">Giới tính của bạn:</label><br>
-    <select id="gender">
-      <option value="">Khác</option>
-      <option value="Nam">Nam</option>
-      <option value="Nữ">Nữ</option>
-    </select><br>
-    
-    <button onclick="showContent()">Gửi</button>
-  </div>
+   Tay
+          const shoulderY = BODY_TOP + 20;
+          ctx.beginPath();
+          ctx.moveTo(0, shoulderY);
+          ctx.lineTo(-35, shoulderY + 30);
+          ctx.moveTo(0, shoulderY);
+          ctx.lineTo(35, shoulderY + 30);
+          ctx.stroke();
 
-  <!-- Ndung chính, ẩn ban đầu -->
-  <div id="main-content">
-    <!-- QR trên -->
-    <div class="donate-container">
-      <img src="qrvanh.jpg" alt="Donate QR trên">
-      <p>Hãy Donate cho HVA</p>
-    </div>
+          // Chân 
+          const step = Math.sin(this.t / STEP_FREQ) * 12;
+          const hipY = BODY_TOP + BODY_LEN;
+          ctx.beginPath();
+          ctx.moveTo(0, hipY);
+          ctx.lineTo(-18 + step, hipY + 30);
+          ctx.moveTo(0, hipY);
+          ctx.lineTo(18 - step, hipY + 30);
+          ctx.stroke();
+        }
 
-    <!-- middle-text -->
-    <div class="center-text" id="main-text"></div>
-
-    <!-- QR dưới -->
-    <div class="donate-container">
-      <img src="qrvanh.jpg" alt="Donate QR dưới">
-      <p>Hãy Donate cho HVA</p>
-    </div>
-  </div>
-
-  <script>
-    function showContent() {
-      const name = document.getElementById('username').value.trim();
-      const gender = document.getElementById('gender').value;
-
-      if(name === "") {
-        alert("Bạn chưa nhập tên!");
-        return;
+        ctx.restore();
       }
-
-      // Xác định dòng giữa dựa trên giới tính
-      let middleText;
-      if(gender === "Nam") {
-        middleText = `${name} đẹp trai`;
-      } else if(gender === "Nữ") {
-        middleText = `${name} xinh gái`;
-      } else {
-        middleText = `${name}`;
-      }
-
-      document.getElementById('main-text').innerText = middleText;
-
-      // Hiển thị nội dung, ẩn form
-      document.getElementById('name-form').style.display = "none";
-      document.getElementById('main-content').style.display = "block";
     }
+
+    const guy = new Stickman();
+
+    function loop() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      guy.update();
+      guy.draw();
+      requestAnimationFrame(loop);
+    }
+    loop();
   </script>
 </body>
 </html>
+
 
 
